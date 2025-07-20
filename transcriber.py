@@ -24,7 +24,7 @@ if result.returncode != 0 or not os.path.exists(wav_file):
     print("Failed to download or convert the audio.")
     exit(1)
 
-print("🎙 Transcribing...")
+print("Transcribing...")
 model = whisper.load_model("base")
 result = model.transcribe(wav_file)
 text = result["text"].strip()
@@ -33,9 +33,9 @@ if text:
     doc = Document()
     doc.add_paragraph(text)
     doc.save("transcription.docx")
-    print("✅ Transcription saved as transcription.docx")
+    print("Transcription saved as transcription.docx")
 else:
-    print("⚠️ No text detected.")
+    print("⚠No text detected.")
 
 os.remove(wav_file)
 print("🧹 Deleted temp_audio.wav")
